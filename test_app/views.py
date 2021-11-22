@@ -13,8 +13,8 @@ def get_name(request):
                 queryset = Posts.objects.select_related('userId').all()
 
                 return render(request, 'test_app/index.html', {'form': form, 'posts': queryset})
-            ch = form.cleaned_data.get('choice')
-            queryset = Posts.objects.select_related('userId').all().filter(userId=ch)
+            chosen_name = form.cleaned_data.get('choice')
+            queryset = Posts.objects.select_related('userId').all().filter(userId=chosen_name)
 
             return render(request, 'test_app/index.html', {'form': form, 'posts': queryset})
     else:
